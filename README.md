@@ -420,7 +420,7 @@ A ✓ next to a threshold means it passed. A ✗ means it failed.
 
 ---
 
-## 7 Your Task - Optimisation Targets
+## 7. Your Task - Optimisation Targets
 
 With 100 IOPS capped on MongoDB, you cannot sustain 10,000 raw read-write cycles per second. The system collapses under load. Find out why, fix it, and make it pass the stress test at 10,000 VUs.
 You must deploy any new infrastructure **inside the cluster** as a Kubernetes Deployment + Service.

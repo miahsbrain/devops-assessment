@@ -1,6 +1,6 @@
 # 🚀 DevOps Engineer Assessment — Scale Under Constraint
 
-> **Objective:** Make a deliberately under-optimised application survive **10,000 concurrent users** against a single, constrained MongoDB node.
+> **Objective:** Make a deliberately under-optimised application survive **5,000 concurrent users** against a single, constrained MongoDB node.
 
 ---
 
@@ -380,7 +380,7 @@ app-nodejs-xxxxxxxxx-xxxxx    1/1     Running   0          90s
 ## 6. Running the Stress Test (Baseline)
 
 Before making any changes, run the stress test to establish a baseline. **It is expected to fail at this point.**
-You should see the system breaking at 10,000 virtual users
+You should see the system breaking at 5,000 virtual users
 
 ```bash
 k6 run stress-test/stress-test.js
@@ -422,7 +422,7 @@ A ✓ next to a threshold means it passed. A ✗ means it failed.
 
 ## 7. Your Task - Optimisation Targets
 
-With 100 IOPS capped on MongoDB, you cannot sustain 10,000 raw read-write cycles per second. The system collapses under load. Find out why, fix it, and make it pass the stress test at 10,000 VUs.
+With 100 IOPS capped on MongoDB, you cannot sustain 5,000 raw read-write cycles per second. The system collapses under load. Find out why, fix it, and make it pass the stress test at 5,000 VUs.
 You must deploy any new infrastructure **inside the cluster** as a Kubernetes Deployment + Service.
 
 You have four layers to investigate:
@@ -454,7 +454,7 @@ Then apply: `kubectl apply -f k8s/app/services.yaml`
 
 ## 8. Pass Criteria
 
-Your submission passes if a full `k6 run stress-test/stress-test.js` run **at 10,000 VUs** produces:
+Your submission passes if a full `k6 run stress-test/stress-test.js` run **at 5,000 VUs** produces:
 
 | Threshold                 | Required Value |
 | ------------------------- | -------------- |
@@ -477,6 +477,7 @@ All four thresholds must pass simultaneously (k6 will print ✓ or ✗ for each)
   - k6 summary output pasted (showing all ✓ thresholds)
 - [ ] All changes deployable via `kubectl apply` (no manual steps not documented)
 - [ ] `setup.sh` still works on a fresh cluster
+- [ ] You must test your solution before submission and include a screenshot of your results
 
 ---
 

@@ -43,7 +43,7 @@ You are given a small web service connected to a MongoDB database. Both are depl
 - Dockerfile and container configuration
 - Number of application pod replicas
 - Kubernetes resource requests/limits for **application pods only**
-- Kubernetes manifests for the application (not the MongoDB deployment)
+- Kubernetes manifests for the application (not the MongoDB CPU and memory limit)
 - Introduce a caching layer (Redis, Memcached, etc.) — but you must deploy it inside the cluster
 - Ingress/proxy configuration
 - Anything else not listed in the "Hard Rules" above
@@ -423,6 +423,7 @@ A ✓ next to a threshold means it passed. A ✗ means it failed.
 ## 7. Your Task - Optimisation Targets
 
 With 100 IOPS capped on MongoDB, you cannot sustain 5,000 raw read-write cycles per second. The system collapses under load. Find out why, fix it, and make it pass the stress test at 5,000 VUs.
+Identify the base system limitations, the optimized system limitations.
 You must deploy any new infrastructure **inside the cluster** as a Kubernetes Deployment + Service.
 
 You have four layers to investigate:
@@ -464,6 +465,7 @@ Your submission passes if a full `k6 run stress-test/stress-test.js` run **at 5,
 | `error_rate`              | < 1%           |
 
 All four thresholds must pass simultaneously (k6 will print ✓ or ✗ for each).
+If you could not pass all the tests, clearly identify why and state that in your solution file, all submissions would be reviewed.
 
 ---
 
